@@ -2,7 +2,6 @@ package com.jojo.Kodlama.io.Devs.business.concretes;
 
 import com.jojo.Kodlama.io.Devs.business.abstracts.ProgrammingLanguageService;
 import com.jojo.Kodlama.io.Devs.business.abstracts.TechnologyService;
-import com.jojo.Kodlama.io.Devs.dataAccess.abstracts.ProgrammingLanguageRepository;
 import com.jojo.Kodlama.io.Devs.dataAccess.abstracts.TechnologyRepository;
 import com.jojo.Kodlama.io.Devs.entities.Technology;
 import com.jojo.Kodlama.io.Devs.requests.TechnologyCreateRequest;
@@ -77,15 +76,27 @@ public class TechnologyManager implements TechnologyService {
     }
 
     @Override
-    public String deleteTechnologyById(int id) {
+    public String deleteTechnologyById(int id) throws Exception{
+        checkIfId(id);
         technologyRepository.deleteById(id);
         return "Technology deleted successfully.";
     }
 
     @Override
-    public Technology getTechnologyById(int id) {
+    public Technology getTechnologyById(int id){
         Optional<Technology> technology = this.technologyRepository.findById(id);
-        return technology.get();
+        if(technology.isPresent()){
+            return technology.get();
+        }
+        return null;
     }
+
+    private void checkIfId(int id) throws Exception{
+        if(id <= 0){
+            throw new Exception("Please enter an valid id.");
+        }
+    }
+
+
 }
 

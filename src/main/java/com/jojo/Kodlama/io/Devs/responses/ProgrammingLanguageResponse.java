@@ -1,6 +1,5 @@
 package com.jojo.Kodlama.io.Devs.responses;
 
-import com.jojo.Kodlama.io.Devs.entities.Technology;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;

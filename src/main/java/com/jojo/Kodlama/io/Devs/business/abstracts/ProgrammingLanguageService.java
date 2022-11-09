@@ -20,5 +20,5 @@ public interface ProgrammingLanguageService {
 
     String deleteProgrammingLanguageById(int id) throws Exception;
 
-    ProgrammingLanguage getProgrammingLanguageById(int id);
+    ProgrammingLanguage getProgrammingLanguageById(int id) throws Exception;
 }
